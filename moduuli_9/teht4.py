@@ -36,6 +36,8 @@ class car_class:
             
 def main():
     cars = []
+    regestration_nums = []
+    distance = []
 
     for i in range(1,11):
         top_speed = random.randint(100, 200)
@@ -50,6 +52,9 @@ def main():
             car.travel(1)
 
         if any(car.traveled_dist >= 10000 for car in cars):
+            for car in cars:
+                regestration_nums.append(car.regestration_num)
+                distance.append(car.traveled_dist)
             break
 
     print("Race results:")
@@ -60,4 +65,5 @@ def main():
         print(f"{car.regestration_num:>14}", f"{car.top_speed:>14} km/h", f"{car.current_speed:>7} km/h", f"{car.traveled_dist:>12.0f} km", f"{car.change_speed:>14} km/h", f"{car.win:>12}")
         print("-" * 100)
 
-main()
+    return cars, regestration_nums, distance
+output = main()
